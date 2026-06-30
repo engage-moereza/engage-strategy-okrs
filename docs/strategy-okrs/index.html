@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Engage Strategy and OKRs · Playing to Win</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --page: #f8f9fc;
+      --card: #fff;
+      --border: #ebebeb;
+      --text: #1f1f1f;
+      --muted: #6c757d;
+      --primary: #1a5ceb;
+      --primary-bg: #e7eefe;
+      --success: #00795a;
+      --success-bg: #edfffc;
+      --warning: #92400e;
+      --warning-bg: #fffbeb;
+      --danger: #991b1b;
+      --danger-bg: #fef2f2;
+      --info-bg: #eff6ff;
+      --info: #1d4ed8;
+      --radius: 10px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Poppins, Inter, sans-serif;
+      background: var(--page);
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .top {
+      background: var(--card);
+      border-bottom: 3px solid var(--primary);
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top h1 { margin: 0 0 4px; font-size: 1.15rem; letter-spacing: -0.02em; }
+    .top p { margin: 0; color: var(--muted); font-size: 0.8rem; }
+    nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 16px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 72px;
+      z-index: 99;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav a {
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--muted);
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    nav a:hover { color: var(--primary); border-color: var(--primary); }
+    main { max-width: var(--max); margin: 0 auto; padding: 20px 16px 48px; }
+    section { margin-bottom: 28px; }
+    h2 { font-size: 1rem; margin: 0 0 12px; color: var(--text); }
+    h3 { font-size: 0.88rem; margin: 16px 0 8px; color: var(--text); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .pill {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .pill.success { background: var(--success-bg); color: var(--success); }
+    .pill.info { background: var(--info-bg); color: var(--info); }
+    .pill.warn { background: var(--warning-bg); color: var(--warning); }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    @media (min-width: 640px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      text-align: center;
+    }
+    .stat .v { font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+    .stat .l { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+    .callout {
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin: 12px 0;
+      border: 1px solid var(--border);
+    }
+    .callout strong { display: block; margin-bottom: 6px; font-size: 0.82rem; }
+    .callout.info { background: var(--info-bg); border-color: #bfdbfe; }
+    .callout.info strong { color: var(--info); }
+    .callout.warn { background: var(--warning-bg); border-color: #fde68a; }
+    .callout.warn strong { color: var(--warning); }
+    .callout.success { background: var(--success-bg); border-color: #bbf7d0; }
+    .callout.success strong { color: var(--success); }
+    .callout.danger { background: var(--danger-bg); border-color: #fecaca; }
+    .callout.danger strong { color: var(--danger); }
+    .callout.neutral { background: var(--page); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .card-h {
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-b { padding: 12px 14px; font-size: 0.82rem; color: var(--text); }
+    .card-b p { margin: 0 0 8px; }
+    .card-b p:last-child { margin-bottom: 0; }
+    .grid2 {
+      display: grid;
+      gap: 12px;
+    }
+    @media (min-width: 768px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+    .grid3 {
+      display: grid;
+      gap: 12px;
+    }
+    @media (min-width: 768px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+    .table-wrap { overflow-x: auto; margin: 10px 0; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.78rem; min-width: 480px; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #f5f5f5; vertical-align: top; }
+    th { background: var(--page); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+    tr:last-child td { border-bottom: none; }
+    tr.row-success td { background: #f0fdf4; }
+    tr.row-warn td { background: #fffbeb; }
+    tr.row-danger td { background: #fef2f2; }
+    tr.row-info td { background: var(--info-bg); }
+    tr.row-neutral td { background: var(--page); }
+    ul.compact { margin: 8px 0; padding-left: 18px; }
+    ul.compact li { margin-bottom: 6px; font-size: 0.82rem; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .muted { color: var(--muted); font-size: 0.78rem; }
+    .reco { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <h1>Engage Strategy and OKRs</h1>
+    <p>Playing to Win · Grounded in Apr–Jun 2026 meetings with Ryan and Rick</p>
+  </header>
+
+  <nav>
+    <a href="#mission">Mission</a>
+    <a href="#cascade">Cascade</a>
+    <a href="#wtp">Where to play</a>
+    <a href="#htw">How to win</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#commercial">Commercial</a>
+    <a href="#okrs">OKRs</a>
+    <a href="#wwhtbt">WWHTBT</a>
+    <a href="#decisions">Decisions</a>
+  </nav>
+
+  <main>
+    <div class="pill-row">
+      <span class="pill success">Grounded in meetings</span>
+      <span class="pill info">Proposed</span>
+      <span class="pill warn">Open decision</span>
+    </div>
+
+    <section id="mission">
+      <div class="callout info">
+        <strong>Mission (affirmed by Ryan)</strong>
+        Make every property transaction transparent, fast, and fair for everyone it touches.
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="v">~600</div><div class="l">Active users</div></div>
+        <div class="stat"><div class="v">~1.5M</div><div class="l">Quotation records</div></div>
+        <div class="stat"><div class="v">~100</div><div class="l">Events / user / day</div></div>
+        <div class="stat"><div class="v">~AED 1.5M</div><div class="l">Monthly portal spend</div></div>
+      </div>
+
+      <div class="callout warn">
+        <strong>The reframe (Playing to Win)</strong>
+        OKRs and the NSM are the bottom of the cascade. Aspiration, where to play, and how to win sit above them. The two lines look like they cannibalise; Martin's rule is they must reinforce. The Jun 10 standalone hedge is that reinforcement made structural, as long as it is gated.
+      </div>
+    </section>
+
+    <section id="cascade">
+      <h2>Directional alignment spine</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Layer</th><th>What it says</th></tr></thead>
+          <tbody>
+            <tr class="row-info"><td><strong>Mission</strong></td><td>Make every property transaction transparent, fast, and fair for everyone it touches.</td></tr>
+            <tr><td><strong>Winning aspiration</strong></td><td>Own the UAE property transaction and the consumer relationship. Consumer AI layer within ~3 years.</td></tr>
+            <tr><td><strong>Strategic belief</strong></td><td>Close information gaps to become indispensable. No one builds for owners and applicants directly.</td></tr>
+            <tr><td><strong>Flywheel</strong></td><td>Listings → Matches → Transactions → Market Knowledge → Listings.</td></tr>
+            <tr><td><strong>Immovable priority</strong></td><td>Owner and applicant outcomes are immovable. Brokers are near-term customers, not the end state.</td></tr>
+            <tr><td><strong>North star (proposed)</strong></td><td>Transactions served well. NCV is the monetisation lens one layer down.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>1. Winning aspiration</h2>
+      <div class="callout info">
+        <strong>Proposed</strong>
+        Own the UAE property transaction and the consumer relationship. End state: consumer AI layer within roughly three years. Mission is the contribution; aspiration is the win.
+      </div>
+      <p class="muted">Immovable: owner and applicant outcomes always come first.</p>
+    </section>
+
+    <hr />
+
+    <section id="wtp">
+      <h2>2. Where to play</h2>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-h">Engage, the Property OS <span class="pill">Brokers</span></div>
+          <div class="card-b">
+            <ul class="compact">
+              <li>Customer: brokers and brokerage management</li>
+              <li>Beachhead: Cencorp brokerages (BH, CRC, Linda's, Lomond)</li>
+              <li>Stepping stone, not the end state</li>
+              <li>Model: per-seat plus portal cost offset and services</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h">Grace, the Deal Engine <span class="pill warn">Standalone Jun 10</span></div>
+          <div class="card-b">
+            <ul class="compact">
+              <li>Customer: owner and applicant directly</li>
+              <li>Beachhead: overflow and dormant demand</li>
+              <li>Luxury excluded early (10M+ sales, 750k+ rentals)</li>
+              <li>Model: commission on AI-closed deals; Cencorp majority</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="callout neutral">
+        <strong>Where we will not play</strong>
+        <ul class="compact">
+          <li>Full property-management CRM now (bridge via integration)</li>
+          <li>Generic chatbots serving every journey (Ask BetterHomes killed)</li>
+          <li>GCC expansion; UAE first, UK next</li>
+          <li>Commodity CRM feature bake-offs</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="htw">
+      <h2>3. How to win</h2>
+      <div class="callout info">
+        <strong>Company integrative logic</strong>
+        Proprietary UAE transaction-data and AI flywheel plus multi-actor network. White space: competitors chase brokers, not owners and applicants.
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-h">Engage OS — how to win</div>
+          <div class="card-b">
+            <ul class="compact">
+              <li>Make the broker more money: productivity plus referral network</li>
+              <li>Become the system a broker cannot close a deal without</li>
+              <li>Lock-in via data, workflow, company-owned conversation history</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h">Grace — how to win</div>
+          <div class="card-b">
+            <ul class="compact">
+              <li>Close at a fraction of broker cost-to-serve</li>
+              <li>Own WhatsApp qualify-match-advise-book flow, minimal UI</li>
+              <li>Pick the appointment, not the property</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h3>The five moats</h3>
+      <ul class="compact">
+        <li>25 years of transaction-linked data (being cleaned)</li>
+        <li>WhatsApp conversational data at scale</li>
+        <li>Transaction-linked listing removal</li>
+        <li>Seller sentiment data in valuation notes</li>
+        <li>~800K scraping records, compounding daily</li>
+      </ul>
+      <div class="callout danger">
+        <strong>Honest caveat: the moat is unrealised</strong>
+        May 4 meeting: after 2+ years, no clean datasets, no data science, lead scoring blocked. Binding constraint is hiring (data engineering, new CTO), not roadmap.
+      </div>
+      <div class="callout success">
+        <strong>Reinforcement logic</strong>
+        OS feeds data and distribution to Grace. Grace proves disintermediated economics. Both capture the same transaction layer. Hedge only holds if gated.
+      </div>
+    </section>
+
+    <section id="capabilities">
+      <h2>4. Capabilities that must be in place</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Capability</th><th>Status today</th></tr></thead>
+          <tbody>
+            <tr class="row-danger"><td><strong>Data engineering and data science</strong></td><td>Binding gap. No clean datasets; lead scoring blocked</td></tr>
+            <tr class="row-danger"><td><strong>Senior engineering leadership</strong></td><td>Gap. New Dubai CTO being hired</td></tr>
+            <tr><td><strong>Grace conversational engine</strong></td><td>Live in pilot ~5% of users, scaling via Auto-View</td></tr>
+            <tr><td><strong>Listing supply</strong></td><td>Partial. Portals blocking scrapers; Alliance not built</td></tr>
+            <tr><td><strong>Broker distribution</strong></td><td>Cencorp access; enforcement via management</td></tr>
+            <tr class="row-danger"><td><strong>Proprietary market knowledge</strong></td><td>Potential, not realised. Blocked by data gap</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>5. Management systems</h2>
+      <div class="grid3">
+        <div class="card"><div class="card-h">Measures</div><div class="card-b">Transactions served well; NCV as lens; fast, fair, transparent as guardrails.</div></div>
+        <div class="card"><div class="card-h">Structure</div><div class="card-b">OKRs by line, three-layer model. Foundations = capability, not strategic objective.</div></div>
+        <div class="card"><div class="card-h">Cadence</div><div class="card-b">Weekly squad, monthly exec, continuous discovery, live WWHTBT register.</div></div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="commercial">
+      <h2>Commercialisation</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Stage</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr class="row-info"><td>1</td><td>CRM vendor</td><td>Now</td></tr>
+            <tr><td>2</td><td>CRM + AI intelligence</td><td>External raise at 2–3</td></tr>
+            <tr><td>3</td><td>Growth engine + revenue share</td><td>Breakeven at 8–10 brokerages</td></tr>
+            <tr><td>4</td><td>Deal network</td><td>Alliance / MLS referral</td></tr>
+            <tr><td>5</td><td>Lifestyle platform</td><td>Mortgage, conveyancing, PM</td></tr>
+            <tr><td>6</td><td>Consumer AI layer</td><td>~3 years</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout success">
+        <strong>Portal cost offset: highest-leverage 2026 move</strong>
+        Charge sellers/landlords for listings failing four-P quality (AED 500–1K, refundable on transaction). Target 30% portal offset by end 2026, 80%+ by 2027. At 50% offset, more than doubles company profit. Pilot Sep/Oct.
+      </div>
+    </section>
+
+    <section id="okrs">
+      <h2>OKR remodel</h2>
+      <div class="grid2">
+        <div>
+          <h3>Current 2026 board</h3>
+          <div class="callout neutral"><strong>No apex above objectives</strong></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Objective</th><th>State</th></tr></thead>
+              <tbody>
+                <tr><td>Acquire</td><td>Early</td></tr>
+                <tr class="row-danger"><td>Reheat</td><td>At risk</td></tr>
+                <tr class="row-success"><td>Retain</td><td>Mature</td></tr>
+                <tr class="row-neutral"><td>Refer</td><td>Not started</td></tr>
+                <tr><td>Foundations</td><td>Early</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>Proposed, mission-anchored</h3>
+          <div class="callout info"><strong>Apex: transactions served well</strong></div>
+          <div class="card">
+            <div class="card-h">Company objectives</div>
+            <div class="card-b">
+              <p><strong>O1 Engine.</strong> Grow transactions served well; NCV as lens.</p>
+              <p><strong>O2 Sustainability.</strong> Portal offset 30%; Grace unit economics ≥3x.</p>
+              <p><strong>O3 Moat.</strong> Close data gap; transactions → market knowledge.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Mission-alignment test</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Objective</th><th>Flywheel</th><th>All four?</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr class="row-success"><td>Acquire</td><td>Listings</td><td>Yes</td><td>More inventory helps applicants</td></tr>
+            <tr class="row-success"><td>Retain</td><td>Matches → Transactions</td><td>Yes</td><td>Strongest line</td></tr>
+            <tr class="row-warn"><td>Reheat</td><td>Re-entry</td><td>Partial</td><td>Only if it serves the contact</td></tr>
+            <tr class="row-danger"><td>Refer</td><td>Market Knowledge</td><td>No</td><td>Cencorp capture; widen to Alliance</td></tr>
+            <tr class="row-neutral"><td>Foundations</td><td>Enabler</td><td>Enabler</td><td>Data gap lives here</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="wwhtbt">
+      <h2>What would have to be true</h2>
+      <p class="muted">Pre-revenue gates. Also escalation gates for Grace (Decision 3).</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Line</th><th>Must be true</th><th>How to test</th></tr></thead>
+          <tbody>
+            <tr class="row-danger"><td>Grace</td><td>Applicants commit to viewing without broker call</td><td>Auto-View Iteration 9. Rollout Jul 15</td></tr>
+            <tr class="row-danger"><td>Grace</td><td>AI cost-to-close ≥3x broker cost-to-serve</td><td>First AI-closed cohort post-July</td></tr>
+            <tr class="row-danger"><td>Grace</td><td>Owners list directly via WhatsApp/web</td><td>Summer auto-list, ~2,000 users</td></tr>
+            <tr class="row-danger"><td>Engage OS</td><td>Brokers change behaviour; platform-attributed deals rise</td><td>Deals-per-broker vs control</td></tr>
+            <tr class="row-warn"><td>Engage OS</td><td>Sellers pay portal co-pay</td><td>Portal-offset pilot Sep/Oct</td></tr>
+            <tr class="row-danger"><td>Company</td><td>Data moat becomes real capability</td><td>Hire data + CTO; lead scoring unblocked</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <h2>Open decisions, with recommendations</h2>
+
+      <div class="card">
+        <div class="card-h">1. Aspiration: UAE transactions or broker seats?</div>
+        <div class="card-b">
+          <p><strong>Rick.</strong> Seats, services, portal offset as commercial fuel.</p>
+          <p><strong>Ryan.</strong> Consumer AI layer; OS risks anchoring on brokers.</p>
+          <p class="reco"><strong>Recommendation.</strong> Aspire to share of UAE transactions. Seats/MRR fund stages 1–3, not the apex.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">2. Cencorp-first or open-network-first?</div>
+        <div class="card-b">
+          <p><strong>Rick.</strong> Prove value, then widen.</p>
+          <p><strong>Ryan.</strong> Alliance / MLS: non-signers don't get listings shown.</p>
+          <p class="reco"><strong>Recommendation.</strong> Dual-speed: mature OS on Cencorp; seed Alliance externally early.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">3. Grace competes with Cencorp brokers, or only overflow?</div>
+        <div class="card-b">
+          <p><strong>Rick.</strong> Standalone AI-led agency; customer-first.</p>
+          <p><strong>Ryan.</strong> Cautious; 6–9 months validation in BH first.</p>
+          <p class="reco"><strong>Recommendation.</strong> Decided Jun 10 as staged hedge. Pre-commit gates: Iteration 9, ≥3x economics, owner listing engagement. Protect Grace decision rights structurally.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">4. How explicit can disintermediation be?</div>
+        <div class="card-b">
+          <p><strong>Rick.</strong> Bold; standalone decouples brand.</p>
+          <p><strong>Ryan.</strong> Missionary not mercenary; publicly cautious.</p>
+          <p class="reco"><strong>Recommendation.</strong> Two narratives: OS = augmentation only; Grace (new name) = consumer-first. Entity split enforces this.</p>
+        </div>
+      </div>
+
+      <div class="callout success">
+        <strong>What to do with the OKR board</strong>
+        <ul class="compact">
+          <li>Lead with transactions served well; NCV as lens</li>
+          <li>Re-cut by Engage OS and Grace</li>
+          <li>Add Market Knowledge objective, gated on data hire</li>
+          <li>Make portal cost offset a first-class 2026 objective</li>
+          <li>Widen Refer to Alliance / MLS network</li>
+          <li>Replace red moonshots with WWHTBT gates until July baselines</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Engage Strategy and OKRs · Updated Jun 2026 · Internal strategy document
+  </footer>
+</body>
+</html>
