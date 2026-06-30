@@ -58,8 +58,18 @@
     .muted { color: var(--muted); font-size: 0.78rem; }
     .tier { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 8px; }
     .tier.squad { color: #6d28d9; }
-    .tier.engage { color: #1d4ed8; }
+    .tier.influence { color: #1d4ed8; }
     .tier.cencorp { color: var(--muted); }
+    .okr-tree { list-style: none; margin: 0; padding-left: 0; font-size: 0.82rem; }
+    .okr-tree ul { list-style: none; margin: 4px 0 8px; padding-left: 20px; border-left: 2px solid var(--border); }
+    .okr-tree li { margin-bottom: 6px; }
+    .okr-tree .node { font-weight: 600; }
+    .okr-tree .detail { color: var(--muted); font-weight: 400; font-size: 0.78rem; }
+    .okr-tree .tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-right: 6px; }
+    .tag-commit { color: #6d28d9; }
+    .tag-track { color: #1d4ed8; }
+    .tag-context { color: var(--muted); }
+    .tag-company { color: #c2410c; }
     footer { text-align: center; padding: 24px 16px; font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--border); }
     @media print {
       @page { size: A4; margin: 14mm 12mm; }
@@ -84,6 +94,7 @@
     <a href="#htw">How to win</a>
     <a href="#commercial">Commercialization</a>
     <a href="#okrs">OKRs</a>
+    <a href="#okr-tree">OKR tree</a>
     <a href="#grace-gates">Grace gates</a>
   </nav>
 
@@ -258,9 +269,49 @@
 
     <section id="okrs">
       <h2>OKRs · 2026 mid-cycle</h2>
-      <p class="muted">Board-facing names unchanged: Acquire, Reheat, Retain, Refer, Moat (was Foundations). Each objective shows squad KRs, Engage metrics, and Cencorp context.</p>
+      <p class="muted">Board-facing names unchanged: Acquire, Reheat, Retain, Refer, Moat (was Foundations).</p>
 
-      <!-- ACQUIRE -->
+      <div class="callout warn">
+        <strong>Two views — not duplicate OKRs</strong>
+        <ul class="compact">
+          <li><strong>Influence metrics</strong> (inside each board objective below) — per-objective outcomes Engage tracks. Squads do not fully control these; they show whether shipped work is working.</li>
+          <li><strong>Engage company objectives</strong> (O1–O3 at the bottom) — executive rollup across all board buckets. Same story, company-level audience.</li>
+        </ul>
+        <p class="muted" style="margin:8px 0 0">Only <strong>Squad KRs</strong> are commitments. Cencorp context explains why the board cares — not an Engage deliverable.</p>
+      </div>
+
+      <section id="okr-tree">
+        <h3>OKR tree</h3>
+        <ul class="okr-tree">
+          <li><span class="node">Apex measures</span> <span class="detail">— not OKRs</span>
+            <ul>
+              <li>Transactions served well (north star)</li>
+              <li>NCV (monetization lens)</li>
+            </ul>
+          </li>
+          <li><span class="node"><span class="tag tag-company">Company rollup</span> Engage objectives O1–O3</span>
+            <ul>
+              <li><strong>O1 · Engine</strong> — NCV + platform-attributed milestones</li>
+              <li><strong>O2 · Sustainability</strong> — per-seat revenue (July) + portal offset</li>
+              <li><strong>O3 · Capabilities</strong> — data pipeline, DLD, lead scoring <span class="detail">(rolls up from Moat)</span></li>
+            </ul>
+          </li>
+          <li><span class="node">Cencorp board objectives</span> <span class="detail">— Acquire · Reheat · Retain · Refer · Moat</span>
+            <ul>
+              <li>Each contains:
+                <ul>
+                  <li><span class="tag tag-commit">Squad KR</span> commit — what squads ship</li>
+                  <li><span class="tag tag-track">Influence</span> track — did it move the needle?</li>
+                  <li><span class="tag tag-context">Cencorp</span> context — why the board cares</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><span class="node">Grace gates G1–G7</span> <span class="detail">— parallel validation track (Clients squad), not a board objective</span></li>
+        </ul>
+      </section>
+
+      <h3>Board objectives · detail</h3>
       <div class="card">
         <div class="card-h">Acquire · Scale listing inventory and owned applicant traffic</div>
         <div class="card-b">
@@ -271,7 +322,7 @@
             <li><strong>Clients:</strong> SmartList prototype live — owner listing onboarding via WhatsApp/web; engagement baselined on ≥200 owners</li>
             <li><strong>Brokers:</strong> Listing quality (four-P) checks instrumented in publish flow; manager approval gate live for pilot brokerage</li>
           </ul>
-          <p class="tier engage">Engage business metric</p>
+          <p class="tier influence">Influence metric · track</p>
           <ul class="compact">
             <li>Company-generated applicant share vs portal baseline (instrumented, tracked)</li>
             <li>High-value inventory ratio in core areas (influence — depends on broker and management behavior)</li>
@@ -291,7 +342,7 @@
             <li><strong>Clients:</strong> ≥3 behavioral reactivation sequences live; open/reply rates baselined on first 1,000 contacts</li>
             <li><strong>Clients:</strong> ≥5% of contacts reached convert to qualified interaction in pilot</li>
           </ul>
-          <p class="tier engage">Engage business metric</p>
+          <p class="tier influence">Influence metric · track</p>
           <ul class="compact">
             <li>Reheat-sourced listings and deals tracked separately (no moonshot revenue target until baselines exist)</li>
           </ul>
@@ -312,7 +363,7 @@
             <li><strong>Clients:</strong> SmartView live at scale on WhatsApp; ≥200 applicants in pilot month 1; completion rate baselined</li>
             <li><strong>Clients:</strong> Applicant records 100% in Core Engage (migration complete)</li>
           </ul>
-          <p class="tier engage">Engage business metric</p>
+          <p class="tier influence">Influence metric · track</p>
           <ul class="compact">
             <li>Applicant-to-viewing conversion: SmartView cohort vs broker-handled control (influence)</li>
             <li>First platform-attributed viewing bookings instrumented and counted (baseline year — we have none yet)</li>
@@ -332,7 +383,7 @@
             <li><strong>Brokers:</strong> Alliance Contract v0 drafted; ≥1 cross-firm referral logged and settled in pilot</li>
             <li><strong>Brokers:</strong> ≥1 partner referral prompt at a defined transaction moment (mortgage or conveyancing); baseline documented</li>
           </ul>
-          <p class="tier engage">Engage business metric</p>
+          <p class="tier influence">Influence metric · track</p>
           <ul class="compact">
             <li>Internal vs external referral rate tracked post-pilot</li>
             <li>Referral GTV through Engage (influence — network liquidity)</li>
@@ -354,7 +405,7 @@
             <li><strong>Product:</strong> Opportunity-solution tree on all new initiatives; ≥1 weekly customer interview per squad</li>
             <li><strong>All:</strong> 100% team on AI tooling (Claude, Cursor); continuous discovery and continuous delivery cadence documented</li>
           </ul>
-          <p class="tier engage">Engage business metric</p>
+          <p class="tier influence">Influence metric · track</p>
           <ul class="compact">
             <li>Labeled conversion dataset toward 2,000+ (ML lead scoring threshold)</li>
             <li>Rework rate ≤30% of delivery cycles</li>
@@ -364,7 +415,8 @@
         </div>
       </div>
 
-      <h3>Company-level OKRs (Engage)</h3>
+      <h3>Engage company objectives · rollup</h3>
+      <p class="muted">How Engage leadership reports progress across all board buckets — not a fourth tier inside every objective.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Objective</th><th>Key results</th></tr></thead>
