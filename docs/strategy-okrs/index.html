@@ -282,34 +282,129 @@
       </div>
 
       <section id="okr-tree">
-        <h3>OKR tree · line of sight</h3>
-        <ul class="okr-tree">
-          <li><span class="node">North Star</span> <span class="detail">— not an OKR</span>
-            <ul>
-              <li>Transactions served well (impact measure)</li>
-              <li>NCV (monetization lens)</li>
-            </ul>
-          </li>
-          <li><span class="node"><span class="tag tag-company">Company</span> objectives O1–O3</span> <span class="detail">— is Engage winning?</span>
-            <ul>
-              <li><strong>O1 · Engine</strong> — NCV + platform-attributed milestones</li>
-              <li><strong>O2 · Sustainability</strong> — per-seat revenue (July) + portal offset</li>
-              <li><strong>O3 · Capabilities</strong> — data pipeline, DLD, lead scoring</li>
-            </ul>
-          </li>
-          <li><span class="node">Objectives</span> <span class="detail">— Acquire · Reheat · Retain · Refer · Moat</span>
-            <ul>
-              <li>Each holds a control-to-impact chain:
-                <ul>
-                  <li><span class="tag tag-commit">Squad commit</span> control — what squads ship</li>
-                  <li><span class="tag tag-track">Influence</span> bridge — is it working yet?</li>
-                  <li><span class="tag tag-context">Customer outcome</span> value — the change we're after</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><span class="node">Grace gates G1–G7</span> <span class="detail">— separate validation track (Clients squad), not an OKR</span></li>
-        </ul>
+        <h3>OKR logic tree</h3>
+        <p class="muted">Read bottom-up. Each <strong>squad commit</strong> should drive an <strong>influence</strong> signal, which should move a <strong>customer outcome</strong>, which rolls into a <strong>company objective</strong>, which advances the <strong>North Star</strong>. Solid = primary roll-up, dashed = secondary contribution. Critique the arrows.</p>
+        <div class="table-wrap">
+          <svg viewBox="0 0 980 600" width="100%" style="min-width:940px;display:block;background:#fff" font-family="Poppins, Inter, sans-serif" font-size="11">
+            <defs>
+              <marker id="arw" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker>
+              <marker id="arwd" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#cbd5e1"/></marker>
+            </defs>
+
+            <!-- tier labels -->
+            <text x="20" y="47"  transform="rotate(-90 20 47)"  text-anchor="middle" font-size="9" font-weight="700" fill="#9ca3af" letter-spacing="1">NORTH STAR</text>
+            <text x="20" y="126" transform="rotate(-90 20 126)" text-anchor="middle" font-size="9" font-weight="700" fill="#9ca3af" letter-spacing="1">COMPANY</text>
+            <text x="20" y="228" transform="rotate(-90 20 228)" text-anchor="middle" font-size="9" font-weight="700" fill="#9ca3af" letter-spacing="1">CUSTOMER</text>
+            <text x="20" y="340" transform="rotate(-90 20 340)" text-anchor="middle" font-size="9" font-weight="700" fill="#9ca3af" letter-spacing="1">INFLUENCE</text>
+            <text x="20" y="495" transform="rotate(-90 20 495)" text-anchor="middle" font-size="9" font-weight="700" fill="#9ca3af" letter-spacing="1">COMMIT</text>
+
+            <!-- connectors -->
+            <g fill="none" stroke="#94a3b8" stroke-width="1.5">
+              <!-- commit -> influence -->
+              <line x1="168" y1="420" x2="168" y2="372" marker-end="url(#arw)"/>
+              <line x1="344" y1="420" x2="344" y2="372" marker-end="url(#arw)"/>
+              <line x1="520" y1="420" x2="520" y2="372" marker-end="url(#arw)"/>
+              <line x1="696" y1="420" x2="696" y2="372" marker-end="url(#arw)"/>
+              <line x1="872" y1="420" x2="872" y2="372" marker-end="url(#arw)"/>
+              <!-- influence -> customer -->
+              <line x1="168" y1="312" x2="168" y2="260" marker-end="url(#arw)"/>
+              <line x1="344" y1="312" x2="344" y2="260" marker-end="url(#arw)"/>
+              <line x1="520" y1="312" x2="520" y2="260" marker-end="url(#arw)"/>
+              <line x1="696" y1="312" x2="696" y2="260" marker-end="url(#arw)"/>
+              <line x1="872" y1="312" x2="872" y2="260" marker-end="url(#arw)"/>
+              <!-- customer -> company (primary) -->
+              <line x1="168" y1="200" x2="352" y2="152" marker-end="url(#arw)"/>
+              <line x1="344" y1="200" x2="356" y2="152" marker-end="url(#arw)"/>
+              <line x1="520" y1="200" x2="372" y2="152" marker-end="url(#arw)"/>
+              <line x1="696" y1="200" x2="376" y2="152" marker-end="url(#arw)"/>
+              <line x1="872" y1="200" x2="824" y2="152" marker-end="url(#arw)"/>
+              <!-- company -> north star -->
+              <line x1="360" y1="104" x2="500" y2="72" marker-end="url(#arw)"/>
+              <line x1="560" y1="104" x2="528" y2="72" marker-end="url(#arw)"/>
+              <line x1="820" y1="104" x2="544" y2="72" marker-end="url(#arw)"/>
+            </g>
+            <!-- secondary (dashed) -->
+            <g fill="none" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="4 3">
+              <line x1="168" y1="200" x2="548" y2="152" marker-end="url(#arwd)"/>
+              <line x1="520" y1="200" x2="556" y2="152" marker-end="url(#arwd)"/>
+            </g>
+
+            <!-- north star -->
+            <rect x="330" y="24" width="380" height="44" rx="8" fill="#edfffc" stroke="#bbf7d0"/>
+            <text x="520" y="51" text-anchor="middle" font-size="11.5" font-weight="700" fill="#00795a">North Star · Transactions served well · NCV</text>
+
+            <!-- company objectives -->
+            <rect x="275" y="104" width="170" height="44" rx="7" fill="#fff7ed" stroke="#fed7aa"/>
+            <text x="360" y="131" text-anchor="middle" font-weight="700" fill="#c2410c">O1 · Engine</text>
+            <rect x="475" y="104" width="170" height="44" rx="7" fill="#fff7ed" stroke="#fed7aa"/>
+            <text x="560" y="131" text-anchor="middle" font-weight="700" fill="#c2410c">O2 · Sustainability</text>
+            <rect x="745" y="104" width="150" height="44" rx="7" fill="#fff7ed" stroke="#fed7aa"/>
+            <text x="820" y="131" text-anchor="middle" font-weight="700" fill="#c2410c">O3 · Capabilities</text>
+
+            <!-- customer outcome row -->
+            <g>
+              <rect x="93"  y="200" width="150" height="56" rx="6" fill="#f8f9fc" stroke="#e5e7eb"/>
+              <text x="168" y="223" text-anchor="middle" fill="#6c757d"><tspan x="168">Lower portal</tspan><tspan x="168" dy="15">spend / listing</tspan></text>
+              <rect x="269" y="200" width="150" height="56" rx="6" fill="#f8f9fc" stroke="#e5e7eb"/>
+              <text x="344" y="223" text-anchor="middle" fill="#6c757d"><tspan x="344">Reactivation</tspan><tspan x="344" dy="15">revenue</tspan></text>
+              <rect x="445" y="200" width="150" height="56" rx="6" fill="#f8f9fc" stroke="#e5e7eb"/>
+              <text x="520" y="223" text-anchor="middle" fill="#6c757d"><tspan x="520">Lower cost-</tspan><tspan x="520" dy="15">per-deal</tspan></text>
+              <rect x="621" y="200" width="150" height="56" rx="6" fill="#f8f9fc" stroke="#e5e7eb"/>
+              <text x="696" y="223" text-anchor="middle" fill="#6c757d"><tspan x="696">Cross-firm</tspan><tspan x="696" dy="15">referral revenue</tspan></text>
+              <rect x="797" y="200" width="150" height="56" rx="6" fill="#f8f9fc" stroke="#e5e7eb"/>
+              <text x="872" y="223" text-anchor="middle" fill="#6c757d"><tspan x="872">Compounding</tspan><tspan x="872" dy="15">capability</tspan></text>
+            </g>
+
+            <!-- influence row -->
+            <g>
+              <rect x="93"  y="312" width="150" height="56" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="168" y="335" text-anchor="middle" fill="#1d4ed8"><tspan x="168">Owned-applicant</tspan><tspan x="168" dy="15">share &#8593;</tspan></text>
+              <rect x="269" y="312" width="150" height="56" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="344" y="335" text-anchor="middle" fill="#1d4ed8"><tspan x="344">Reply &#8594;</tspan><tspan x="344" dy="15">qualified rate</tspan></text>
+              <rect x="445" y="312" width="150" height="56" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="520" y="335" text-anchor="middle" fill="#1d4ed8"><tspan x="520">Viewing conv.</tspan><tspan x="520" dy="15">vs control</tspan></text>
+              <rect x="621" y="312" width="150" height="56" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="696" y="335" text-anchor="middle" fill="#1d4ed8"><tspan x="696">Internal vs</tspan><tspan x="696" dy="15">external rate</tspan></text>
+              <rect x="797" y="312" width="150" height="56" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="872" y="335" text-anchor="middle" fill="#1d4ed8"><tspan x="872">Dataset 2k+;</tspan><tspan x="872" dy="15">rework &#8804;30%</tspan></text>
+            </g>
+
+            <!-- squad commit row -->
+            <g>
+              <rect x="93"  y="420" width="150" height="150" rx="6" fill="#f5f3ff" stroke="#ddd6fe"/>
+              <text x="105" y="445" fill="#6d28d9"><tspan x="105">&#183; CIE scoring</tspan><tspan x="105" dy="20">&#183; SmartList</tspan><tspan x="105" dy="20">&#183; Four-P gate</tspan></text>
+              <rect x="269" y="420" width="150" height="150" rx="6" fill="#f5f3ff" stroke="#ddd6fe"/>
+              <text x="281" y="445" fill="#6d28d9"><tspan x="281">&#183; 3 reactivation</tspan><tspan x="281" dy="20">&#183; 5% &#8594; qualified</tspan></text>
+              <rect x="445" y="420" width="150" height="150" rx="6" fill="#f5f3ff" stroke="#ddd6fe"/>
+              <text x="457" y="445" fill="#6d28d9"><tspan x="457">&#183; Scorecards</tspan><tspan x="457" dy="20">&#183; EngageAI v1</tspan><tspan x="457" dy="20">&#183; SmartView 200</tspan></text>
+              <rect x="621" y="420" width="150" height="150" rx="6" fill="#f5f3ff" stroke="#ddd6fe"/>
+              <text x="633" y="445" fill="#6d28d9"><tspan x="633">&#183; Alliance v0</tspan><tspan x="633" dy="20">&#183; Partner prompt</tspan></text>
+              <rect x="797" y="420" width="150" height="150" rx="6" fill="#f5f3ff" stroke="#ddd6fe"/>
+              <text x="809" y="445" fill="#6d28d9"><tspan x="809">&#183; CI/CD daily</tspan><tspan x="809" dy="20">&#183; Cleansing v1</tspan><tspan x="809" dy="20">&#183; OST + interview</tspan></text>
+            </g>
+
+            <!-- objective labels -->
+            <g text-anchor="middle" font-size="12" font-weight="700" fill="#1f1f1f">
+              <text x="168" y="588">Acquire</text>
+              <text x="344" y="588">Reheat</text>
+              <text x="520" y="588">Retain</text>
+              <text x="696" y="588">Refer</text>
+              <text x="872" y="588">Moat</text>
+            </g>
+          </svg>
+        </div>
+        <p class="muted">Grace gates G1–G7 are a separate validation track and are deliberately not in this tree.</p>
+
+        <div class="callout warn">
+          <strong>Critique prompts — where the logic is weakest</strong>
+          <ul class="compact">
+            <li><strong>O1 Engine is overloaded:</strong> four of five objectives roll into it. Is it a genuine objective or a catch-all that means little?</li>
+            <li><strong>O2 Sustainability has no primary owner:</strong> only dashed (secondary) lines reach it. Is revenue/sustainability an objective, or a cross-cutting constraint that shouldn't be an O-level item?</li>
+            <li><strong>O3 Capabilities ≈ Moat (1:1):</strong> the company objective and the squad objective are the same thing. Collapse them, or is the company-vs-squad view worth the duplication?</li>
+            <li><strong>Assumed arrows:</strong> which squad-commit → influence links are hopeful, not evidenced? e.g. SmartList → owned-applicant share, or Alliance v0 → internal-vs-external referral rate.</li>
+            <li><strong>Missing rung:</strong> nothing in the tree connects directly to "transactions served well" except via revenue proxies. Is the North Star actually wired in, or decorative?</li>
+          </ul>
+        </div>
       </section>
 
       <h3>Objectives · detail</h3>
