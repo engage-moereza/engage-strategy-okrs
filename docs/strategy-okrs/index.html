@@ -257,11 +257,27 @@
       </div>
       <div class="callout success">
         <strong>Portal cost offset (mid-cycle initiative)</strong>
-        Four-P listing quality filter built into PropertyOS. Co-pay model (AED 500–1K, refundable on transaction) for listings that fail criteria. <strong>Value delivered to brokerage customers:</strong> reduces their net portal spend. Target: measurable offset for pilot brokerages by Q4 2026. Pilot one category, Sep/Oct.
+        Four-P listing quality filter built into PropertyOS. Co-pay model (AED 500–1K, refundable on transaction) for listings that fail criteria. <strong>Value delivered to brokerage customers:</strong> reduces their net portal spend. Target: measurable offset for pilot brokerages by Q4 2026. Pilot one category, Sep/Oct. Hold it to ≥3× value vs cost: set the spend-avoided baseline at pilot start.
       </div>
       <div class="callout info">
         <strong>EngageAI (mid-cycle initiative)</strong>
-        Agentic AI on PropertyOS to transform brokerage marketing and finance functions. Massive operational efficiency is part of the per-seat value proposition.
+        Agentic AI on PropertyOS for brokerage marketing and finance functions. Efficiency is value delivered for the per-seat fee, not a separate model. Baseline time-on-task per function first, then hold it to ≥3× value vs cost.
+      </div>
+
+      <h3>Investment discipline · ≥3× value vs cost</h3>
+      <p class="muted">Each initiative commits to a baseline, the value it creates, the cost to run it, and a ≥3× target. Where there is no baseline yet, the first job is to set one before scaling spend.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Initiative</th><th>Value measure</th><th>Cost measure</th><th>≥3× status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Portal offset</strong></td><td>Net portal spend avoided per pilot brokerage</td><td>Build + co-pay handling + ops</td><td>Set baseline at pilot (Sep/Oct), then target ≥3×</td></tr>
+            <tr><td><strong>EngageAI v1</strong></td><td>Time saved per brokerage function</td><td>Build + model and run cost</td><td>Baseline time-on-task first; ≥3× on labor cost</td></tr>
+            <tr><td><strong>SmartView (Retain)</strong></td><td>Applicant-to-viewing lift vs broker-handled control</td><td>Build + WhatsApp + run</td><td>Baseline month 1; ≥3× on cost-to-serve</td></tr>
+            <tr><td><strong>Reactivation (Reheat)</strong></td><td>Incremental revenue vs broadcast baseline</td><td>Sequence build + messaging</td><td>Baseline first 1,000 contacts, then ≥3×</td></tr>
+            <tr><td><strong>Alliance (Refer)</strong></td><td>Referral revenue through Engage</td><td>Contract + integration ops</td><td>Baseline at first settled referral</td></tr>
+            <tr class="row-success"><td><strong>Grace close (G7)</strong></td><td>Commission per closed deal</td><td>Cost-to-serve that deal</td><td>Explicit ≥3× gate; measure on first cohort</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -279,6 +295,27 @@
           <li><span class="tag tag-context">Customer outcome</span>: the value to the customer. Rolls up into the company objectives (O1–O3).</li>
         </ul>
         <p class="muted" style="margin:8px 0 0">Influence is not a separate level. It is the measurement bridge between squad commit and customer outcome. Pre-revenue, it is the only feedback loop.</p>
+      </div>
+
+      <div class="callout info">
+        <strong>Operating rules (how we keep focus)</strong>
+        <ul class="compact">
+          <li><strong>One bet per squad per quarter.</strong> Each squad makes exactly one committed bet. Everything else is maintenance or discovery, not a promise.</li>
+          <li><strong>≥3× value vs cost.</strong> Every initiative commits to a baseline, a value measure, and a cost measure, and is expected to return at least 3× value over total cost.</li>
+          <li><strong>Outcomes carry a health guardrail.</strong> No outcome ships without a paired product-health metric, so we do not win the number and break the product.</li>
+        </ul>
+      </div>
+
+      <h3>This cycle's one bet per squad</h3>
+      <p class="muted">Proposed. The tree can hold many objectives; this table is where we say no. Confirm or swap each cell, but keep it to one bet per squad per quarter. Engineering and Data run Moat as enabling work, not a competing bet.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Quarter</th><th>Brokers squad</th><th>Clients squad</th></tr></thead>
+          <tbody>
+            <tr class="row-info"><td><strong>Q3 (now)</strong></td><td>Deals &amp; Scorecards live and baselined at BetterHomes</td><td>SmartView funnel past viewing: prove G2, then G3</td></tr>
+            <tr><td><strong>Q4</strong></td><td>Portal offset pilot delivering measurable net savings</td><td>Post-viewing to first platform-attributed close</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <section id="okr-tree">
@@ -520,6 +557,21 @@
             <tr><td><strong>O1 · Engine</strong></td><td>Establish NCV instrumentation; first platform-attributed transaction milestones baselined (viewing → offer → close)</td></tr>
             <tr><td><strong>O2 · Sustainability</strong></td><td>PropertyOS per-seat revenue live across group (July); portal offset pilot delivering measurable customer savings</td></tr>
             <tr><td><strong>O3 · Capabilities</strong></td><td>Data cleansing pipeline v1; DLD path confirmed; lead scoring unblocked on clean dataset</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Product-health guardrails</h3>
+      <p class="muted">Each outcome is paired with a health metric. We do not accept an outcome win that regresses these.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Objective</th><th>Outcome we chase</th><th>Health guardrail (must not regress)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Acquire</strong></td><td>Lower portal spend</td><td>Listing quality and publish-flow reliability</td></tr>
+            <tr><td><strong>Reheat</strong></td><td>Reactivation revenue</td><td>Opt-out and complaint rate on sequences</td></tr>
+            <tr><td><strong>Retain</strong></td><td>Lower cost-per-deal</td><td>SmartView completion rate and applicant CSAT</td></tr>
+            <tr><td><strong>Refer</strong></td><td>Referral revenue</td><td>Referral settlement accuracy and partner SLA</td></tr>
+            <tr><td><strong>Moat</strong></td><td>Compounding capability</td><td>Uptime, rework ≤30%, data-quality error rate</td></tr>
           </tbody>
         </table>
       </div>
